@@ -1,3 +1,6 @@
+/*Copyright 2020. Yujin Kim all rights reserved.
+Computer Graphics Lecture in Inha University*/
+
 /************************************************************************
 * Simple objParser														*
 * This simple objParser works under STRICT RULES using .obj file		*
