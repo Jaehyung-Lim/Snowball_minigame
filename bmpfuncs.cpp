@@ -1,10 +1,12 @@
+/*Copyright 2020. Yujin Kim all rights reserved.
+Computer Graphics Lecture in Inha University*/
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "bmpfuncs.h"
 
 #define VERBOSE false
-//readImageDataf, storeImage,  readImageData   ->ÀÌ·¸°Ô 3°³ÀÇ ÇÔ¼ö Á¸Àç
+//readImageDataf, storeImage,  readImageData   ->ì´ë ‡ê²Œ 3ê°œì˜ í•¨ìˆ˜ ì¡´ì¬
 void storeImage(float *imageOut, const char *filename, int rows, int cols, 
                 const char* refFilename) {
 
@@ -105,7 +107,7 @@ uchar* readImageData(const char *filename, int* width, int* height, int* channel
 		return 0;
 	}
 
-	// ¹ÙÀÌÆ® ¹è¿­¿¡¼­ int º¯¼ö¸¦ ÀĞ½À´Ï´Ù. 
+	// ë°”ì´íŠ¸ ë°°ì—´ì—ì„œ int ë³€ìˆ˜ë¥¼ ì½ìŠµë‹ˆë‹¤. 
 	dataPos = *(int*)&(header[0x0A]);
 	imageSize = *(int*)&(header[0x22]);
 	*width = *(int*)&(header[0x12]);
@@ -183,7 +185,7 @@ float* readImageDataf(const char *filename, int* width, int* height, int* channe
 		return 0;
 	}
 
-	// ¹ÙÀÌÆ® ¹è¿­¿¡¼­ int º¯¼ö¸¦ ÀĞ½À´Ï´Ù. 
+	// ë°”ì´íŠ¸ ë°°ì—´ì—ì„œ int ë³€ìˆ˜ë¥¼ ì½ìŠµë‹ˆë‹¤. 
 	dataPos = *(int*)&(header[0x0A]);
 	imageSize = *(int*)&(header[0x22]);
 	*width = *(int*)&(header[0x12]);
