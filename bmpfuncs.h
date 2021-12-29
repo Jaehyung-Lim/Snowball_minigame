@@ -1,3 +1,5 @@
+/*Copyright 2020. Yujin Kim all rights reserved.
+Computer Graphics Lecture in Inha University*/
 #ifndef __BMPFUNCS__
 #define __BMPFUNCS__
 
