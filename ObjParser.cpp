@@ -1,3 +1,5 @@
+/*Copyright 2020. Yujin Kim all rights reserved.
+Computer Graphics Lecture in Inha University*/
 #include <GL/glut.h>
 #include <GL/freeglut.h>
 #include "ObjParser.h"
@@ -50,15 +52,15 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(250, 250);
-	glutCreateWindow("GLUT Test");	// À§ÀÇ ¼ø¼­ ¹«Á¶°Ç °íÁ¤
+	glutCreateWindow("GLUT Test");	// ìœ„ì˜ ìˆœì„œ ë¬´ì¡°ê±´ ê³ ì •
 
-	// »ç¿ëÀÚ ÃÊ±âÈ­ ÇÔ¼ö
+	// ì‚¬ìš©ì ì´ˆê¸°í™” í•¨ìˆ˜
 	init();
 
-	// pop-up ¸Ş´º µî·Ï ÇÔ¼ö
+	// pop-up ë©”ë‰´ ë“±ë¡ í•¨ìˆ˜
 	add_menu();
 
-	// ¸®¼Ò½º ·Îµå ÇÔ¼ö
+	// ë¦¬ì†ŒìŠ¤ ë¡œë“œ í•¨ìˆ˜
 	get_resource("obj/BITCOIN.obj");
 
 	/* Create a single window with a keyboard and display callback */
@@ -82,7 +84,7 @@ int main(int argc, char** argv)
 void light_default() {
 	glClearColor(0.f, 0.f, 0.f, 1.0f);
 
-	/* Light0 Á¶¸í °ü·Ã ¼³Á¤ */
+	/* Light0 ì¡°ëª… ê´€ë ¨ ì„¤ì • */
 	GLfloat ambientLight[] = { 0.3f, 0.3f, 0.3f, 1.0f };
 	GLfloat diffuseLight[] = { 0.9f, 0.9f, 0.9f, 1.0f };
 	GLfloat specularLight[] = { 0.5f, 0.5f, 0.9f, 1.0f };
@@ -95,7 +97,7 @@ void light_default() {
 	/********* light point position setting **********/
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
-	/* Light1 Á¶¸í °ü·Ã ¼³Á¤ */
+	/* Light1 ì¡°ëª… ê´€ë ¨ ì„¤ì • */
 	GLfloat ambientLight1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	GLfloat diffuseLight1[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	GLfloat specularLight1[] = { 0.9f, 0.9f, 0.9f, 1.0f };
@@ -133,7 +135,7 @@ void light_default() {
 	glEnable(GL_LIGHT1);
 
 	/* DEPTH TEST ENABLE */
-	glFrontFace(GL_CW);	// CW CCW¹Ù²ãº¸¸é¼­ front face º¯°æÇØº¸±â!
+	glFrontFace(GL_CW);	// CW CCWë°”ê¿”ë³´ë©´ì„œ front face ë³€ê²½í•´ë³´ê¸°!
 }
 
 void setTextureMapping() {
@@ -147,7 +149,7 @@ void setTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -180,7 +182,7 @@ void init()
 
 	glEnable(GL_TEXTURE_2D);
 	setTextureMapping();
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE); //GL_REPLACE : polygonÀÇ ¿ø·¡ »ö»óÀº ¹«½ÃÇÏ°í texture·Î µ¤À½
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE); //GL_REPLACE : polygonì˜ ì›ë˜ ìƒ‰ìƒì€ ë¬´ì‹œí•˜ê³  textureë¡œ ë®ìŒ
 }
 
 void special_keyboard(int key, int x, int y)
@@ -284,7 +286,7 @@ void draw_obj(ObjParser *objParser)
 void draw_obj_with_texture(ObjParser *objParser)
 {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureMonkey);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -364,13 +366,13 @@ void draw_cube_textures()
 }
 
 void draw_textureCube() {
-	glColor3f(1.0, 1.0, 1.0);	// white·Î color¸¦ setÇØÁÖ¾î¾ß texture»ö»óÀÌ Á¦´ë·Î Àû¿ë µÊ!
+	glColor3f(1.0, 1.0, 1.0);	// whiteë¡œ colorë¥¼ setí•´ì£¼ì–´ì•¼ textureìƒ‰ìƒì´ ì œëŒ€ë¡œ ì ìš© ë¨!
 	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-			// polygonÀÇ ¿ø·¡ »ö»óÀº ¹«½ÃÇÏ°í texture·Î µ¤À½
+			// polygonì˜ ì›ë˜ ìƒ‰ìƒì€ ë¬´ì‹œí•˜ê³  textureë¡œ ë®ìŒ
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	// polygonÀÇ ¿ø·¡ »ö»ó°ú texture »ö»óÀ» °öÇÏ¿© µ¤À½, texture°¡ ÀÔÇôÁø Ç¥¸é¿¡ ±¤¿ø È¿°ú ¼³Á¤ °¡´É
+	// polygonì˜ ì›ë˜ ìƒ‰ìƒê³¼ texture ìƒ‰ìƒì„ ê³±í•˜ì—¬ ë®ìŒ, textureê°€ ì…í˜€ì§„ í‘œë©´ì— ê´‘ì› íš¨ê³¼ ì„¤ì • ê°€ëŠ¥
 //glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-		// textureÀÇ »ö»óÀ¸·Î µ¤¾î ¾º¿î´Ù
+		// textureì˜ ìƒ‰ìƒìœ¼ë¡œ ë®ì–´ ì”Œìš´ë‹¤
 
 	glBindTexture(GL_TEXTURE_2D, textureMonkey);
 	glBegin(GL_QUADS);
@@ -419,7 +421,7 @@ void draw_textureCube() {
 
 	glBindTexture(GL_TEXTURE_2D, textureMonkey);
 	glBegin(GL_QUADS);
-	glNormal3f(0, 0, -1.0);	//-zÃà
+	glNormal3f(0, 0, -1.0);	//-zì¶•
 	glTexCoord2f(0, 0); glVertex3f(1.0, 1.0, -1.0);
 	glTexCoord2f(1, 0); glVertex3f(-1.0, 1.0, -1.0);
 	glTexCoord2f(1, 1); glVertex3f(-1.0, -1.0, -1.0);
