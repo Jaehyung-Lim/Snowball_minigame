@@ -27,18 +27,18 @@ double Cam_radius = 13 * sqrt(3);
 double theta = 80, pi = 270;
 double BallAngle = 0;
 double cam[3] = { Cam_radius * sin(theta * PI / 180) * sin(pi * PI / 180),Cam_radius * cos(theta * PI / 180),
-Cam_radius * sin(theta * PI / 180) * cos(pi * PI / 180) };//Ä«¸Ş¶óÀÇ ÁÂÇ¥
+Cam_radius * sin(theta * PI / 180) * cos(pi * PI / 180) };//ì¹´ë©”ë¼ì˜ ì¢Œí‘œ
 
 
 float floorSize = 200;
 int floorSize_int = 200; 
-//double ball[3] = { -floorSize+10,0,-floorSize+10 };//Ä«¸Ş¶ó°¡ º¸´Â ¹°Ã¼ÀÇ ÁÂÇ¥
-double ball[3] = { 0,0,0 };//Ä«¸Ş¶ó°¡ º¸´Â ¹°Ã¼ÀÇ ÁÂÇ¥
+//double ball[3] = { -floorSize+10,0,-floorSize+10 };//ì¹´ë©”ë¼ê°€ ë³´ëŠ” ë¬¼ì²´ì˜ ì¢Œí‘œ
+double ball[3] = { 0,0,0 };//ì¹´ë©”ë¼ê°€ ë³´ëŠ” ë¬¼ì²´ì˜ ì¢Œí‘œ
 double ball_eye[3] = { 0,0,0 };
-double up = 1;	 //Ä«¸Ş¶óÀÇ ¹æÇâ
-double size = 3;//´«µ¢ÀÌÀÇ Å©±â 
+double up = 1;	 //ì¹´ë©”ë¼ì˜ ë°©í–¥
+double size = 3;//ëˆˆë©ì´ì˜ í¬ê¸° 
 double detect = size;
-//½ÃÀÛ Å©±â´Â 3, ÃÖ¼Ò: 1, ÃÖ´ë 10: ÅÛ ¸ÔÀ» ¶§¸¶´Ù 0.5 Áõ°¡
+//ì‹œì‘ í¬ê¸°ëŠ” 3, ìµœì†Œ: 1, ìµœëŒ€ 10: í…œ ë¨¹ì„ ë•Œë§ˆë‹¤ 0.5 ì¦ê°€
 double spin_x = 360;
 double spin_z = 360;
 double spin_coin = 0;
@@ -71,19 +71,19 @@ bool rnd_bomb[10];
 bool rnd_heart[3];
 bool mag_effect = false;
 int mag_timer = 0;
-//Ãæµ¹ ¹ß»ı½Ã¿¡ rnd °ªÀÌ true·Î ¹Ù²î°í, ÀÌ¿¡ ÇØ´çÇÏ´Â °ÍÀº ÀÌÁ¦ ¸ø ¸ÔÀ½.
+//ì¶©ëŒ ë°œìƒì‹œì— rnd ê°’ì´ trueë¡œ ë°”ë€Œê³ , ì´ì— í•´ë‹¹í•˜ëŠ” ê²ƒì€ ì´ì œ ëª» ë¨¹ìŒ.
 
 int coin_cnt = 15;
 int coin_get = 0;
 int tick = 0;
 int score = 0;
-int view_point = 3;//3ÀÎÄª ½ÃÁ¡
+int view_point = 3;//3ì¸ì¹­ ì‹œì 
 int Life = 3;
 
 
 bool crash_wall = false;
 bool game_over = false;
-bool start_display = true; //¸Ç Ã³À½¿£ ¾ê°¡ true, ³ª¸ÓÁö´Â ¸ğµÎ false
+bool start_display = true; //ë§¨ ì²˜ìŒì—” ì–˜ê°€ true, ë‚˜ë¨¸ì§€ëŠ” ëª¨ë‘ false
 bool how_to_play = false;
 double start_angle = 0;
 bool game_win = false;
@@ -123,7 +123,7 @@ ObjParser* icewall;
 ObjParser* dom;
 
 void printInstruction();
-/*ÅØ½ºÃÄ ¸ÊÇÎ*/
+/*í…ìŠ¤ì³ ë§µí•‘*/
 void sphereTextureMapping();
 void floorTextureMapping();
 void coinTextureMapping();
@@ -142,9 +142,9 @@ void init(void);
 void color_menu(int);
 
 /*draw*/
-void draw_floor();	//¹Ù´Ú, º®, ÃµÀå
+void draw_floor();	//ë°”ë‹¥, ë²½, ì²œì¥
 void draw_axis();
-void draw_ball();	//°øÀÇ ¿òÁ÷ÀÓµµ ¸ğµÎ Æ÷ÇÔ
+void draw_ball();	//ê³µì˜ ì›€ì§ì„ë„ ëª¨ë‘ í¬í•¨
 void draw_item();
 void draw_map();
 void draw_string(void*, const char*, int, int);
@@ -173,7 +173,7 @@ void draw_mountain_wall();
 /*resize*/
 void resize(int, int);
 
-/*Å°º¸µå*/
+/*í‚¤ë³´ë“œ*/
 void special_keyboard(int, int, int);
 void keyboard_p(unsigned char, int, int);
 void keyboard_r(unsigned char, int, int);
@@ -186,21 +186,21 @@ void idle();
 void get_resource(const char*);
 double radian(double x);
 
-/*¸¶¿ì½º*/
+/*ë§ˆìš°ìŠ¤*/
 void mouse(int, int, int, int);
 
 clock_t start, end;
-clock_t start_mag, end_mag; //ÀÚ¼® È¿°ú ½ÇÇà½Ã°£
+clock_t start_mag, end_mag; //ìì„ íš¨ê³¼ ì‹¤í–‰ì‹œê°„
 int main(int argc, char** argv) {
 	//start = clock();
 	int menu, submenu;						
 
-	/*Window ÃÊ±âÈ­*/
-	glutInit(&argc, argv);					//À©µµ¿ì ÃÊ±âÈ­ ÇÔ¼ö
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);	//µğ½ºÇÃ·¹ÀÌ ¸ğµå ¼³Á¤
+	/*Window ì´ˆê¸°í™”*/
+	glutInit(&argc, argv);					//ìœˆë„ìš° ì´ˆê¸°í™” í•¨ìˆ˜
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);	//ë””ìŠ¤í”Œë ˆì´ ëª¨ë“œ ì„¤ì •
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);			
 	glutInitWindowPosition(350, 200);		
-	glutCreateWindow("12171841 ÀÓÀçÇü ");	
+	glutCreateWindow("12171841 ì„ì¬í˜• ");	
 	init();									
 
 	coin = new ObjParser("game/BITCOIN.obj");
@@ -219,25 +219,25 @@ int main(int argc, char** argv) {
 	glutAddMenuEntry("Red ball", 2);
 	glutAddMenuEntry("Blue ball", 3);
 
-	/*Poup menu »ı¼º ¹× Ãß°¡*/
+	/*Poup menu ìƒì„± ë° ì¶”ê°€*/
 	glutCreateMenu(main_menu);
 	glutAddMenuEntry("Quit", 1);
 	glutAddSubMenu("Color",submenu);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 
-	/* call back ÇÔ¼ö Á¤ÀÇ*/
+	/* call back í•¨ìˆ˜ ì •ì˜*/
 	
-	glutDisplayFunc(draw);			//draw() -> ½ÇÁ¦ ±×¸®±â ÇÔ¼ö
+	glutDisplayFunc(draw);			//draw() -> ì‹¤ì œ ê·¸ë¦¬ê¸° í•¨ìˆ˜
 
-	glutSpecialFunc(special_keyboard);		//¹æÇâÅ° ÀÔ·Â
-	glutReshapeFunc(resize);				//resize ÇÔ¼ö
+	glutSpecialFunc(special_keyboard);		//ë°©í–¥í‚¤ ì…ë ¥
+	glutReshapeFunc(resize);				//resize í•¨ìˆ˜
 	glutMouseWheelFunc(mouseWheel);			//mouseWheel
 	glutKeyboardFunc(keyboard_p);
 	glutKeyboardUpFunc(keyboard_r);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
-	/*Looping ½ÃÀÛ*/
+	/*Looping ì‹œì‘*/
 	glutMainLoop();
 
 	return 0;
@@ -274,16 +274,16 @@ void init(void) {
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glEnable(GL_TEXTURE_2D);
 }
-/*È­¸é ¼³¸í*/
+/*í™”ë©´ ì„¤ëª…*/
 void printInstruction() {
-	printf("w, s, a, d: »ó, ÇÏ, ÁÂ, ¿ì\n");
+	printf("w, s, a, d: ìƒ, í•˜, ì¢Œ, ìš°\n");
 	printf("[: zoom in\n]: zoom out\n");
-	printf("¸¶¿ì½º ÈÙ: zoom in/out\n");
-	printf("¹æÇâÅ°: ½ÃÁ¡ Á¶Àı\n");
-	printf("¸¶¿ì½º ¿ìÅ¬¸¯ ¸Ş´º: °ÔÀÓ °­Á¦ Á¾·á ¹× »ö º¯°æ\n");
+	printf("ë§ˆìš°ìŠ¤ íœ : zoom in/out\n");
+	printf("ë°©í–¥í‚¤: ì‹œì  ì¡°ì ˆ\n");
+	printf("ë§ˆìš°ìŠ¤ ìš°í´ë¦­ ë©”ë‰´: ê²Œì„ ê°•ì œ ì¢…ë£Œ ë° ìƒ‰ ë³€ê²½\n");
 }
 
-/*ÅØ½ºÃÄ ¸ÅÇÎ*/
+/*í…ìŠ¤ì³ ë§¤í•‘*/
 const char* COLOR[3] = {"game/SNOW.bmp","game/red.bmp","game/blue.bmp" };
 void sphereTextureMapping() {
 	glGenTextures(1, textBall);
@@ -345,7 +345,7 @@ void coinTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -362,7 +362,7 @@ void magnetTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -379,7 +379,7 @@ void mountainTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -396,7 +396,7 @@ void bombTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -413,7 +413,7 @@ void crackTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -430,7 +430,7 @@ void crashedTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -446,7 +446,7 @@ void heartTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -462,7 +462,7 @@ void trophyTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -478,7 +478,7 @@ void icewallTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -494,44 +494,44 @@ void domTextureMapping() {
 
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT µÑÁß ÇÏ³ª ¼±ÅÃ
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	//GL_REPEAT ë‘˜ì¤‘ í•˜ë‚˜ ì„ íƒ
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 }
 
-/*Display Äİ¹é ÇÔ¼ö ¸¸µé±â*/
+/*Display ì½œë°± í•¨ìˆ˜ ë§Œë“¤ê¸°*/
 void draw_floor() {
 	glFrontFace(GL_CW);
 	glCullFace(GL_FRONT);
 	glEnable(GL_CULL_FACE);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBindTexture(GL_TEXTURE_2D, *textFloor);
-	glBegin(GL_QUADS);				//»ç°¢Çü ±×¸®±â ÇÔ¼ö
+	glBegin(GL_QUADS);				//ì‚¬ê°í˜• ê·¸ë¦¬ê¸° í•¨ìˆ˜
 	glTexCoord2f(0, 0); glVertex3f(-floorSize, 0, -floorSize);
 	glTexCoord2f(0, 10); glVertex3f(-floorSize, 0, floorSize);
 	glTexCoord2f(10, 10); glVertex3f(floorSize, 0, floorSize);
 	glTexCoord2f(10, 0); glVertex3f(floorSize, 0, -floorSize);
 	glEnd();
 	glFlush();
-} //¹Ù´Ú, ÃµÀå, º®
+} //ë°”ë‹¥, ì²œì¥, ë²½
 void draw_axis() {
-	glLineWidth(3); // ÁÂÇ¥ÃàÀÇ µÎ²²
+	glLineWidth(3); // ì¢Œí‘œì¶•ì˜ ë‘ê»˜
 	glBegin(GL_LINES);
-	glColor3f(1, 0, 0); // XÃàÀº red
+	glColor3f(1, 0, 0); // Xì¶•ì€ red
 	glVertex3f(0, 0, 0); glVertex3f(4, 0, 0);
 
-	glColor3f(0, 1, 0); // YÃàÀº green
+	glColor3f(0, 1, 0); // Yì¶•ì€ green
 	glVertex3f(0, 0, 0); glVertex3f(0, 4, 0);
 
-	glColor3f(0, 0, 1); // ZÃàÀº blue
+	glColor3f(0, 0, 1); // Zì¶•ì€ blue
 	glVertex3f(0, 0, 0); glVertex3f(0, 0, 4);
 	glEnd();
-	glLineWidth(1); // µÎ²² ´Ù½Ã È¯¿ø
+	glLineWidth(1); // ë‘ê»˜ ë‹¤ì‹œ í™˜ì›
 }
 void draw_ball(){
 	glPushMatrix();
-	glTranslatef(0, -5 + size, 0); //¶¥ÀÌ y=-5¿¡ ÀÖÀ¸´Ï±î, yÁÂÇ¥´Â °á±¹ -5 ¸¸Å­ ³»¸®°í ±× ´ÙÀ½¿¡ ÀÌ ÁÂÇ¥¸¦ ¼³Á¤ÇØ¾ßÇÔ. 
+	glTranslatef(0, -5 + size, 0); //ë•…ì´ y=-5ì— ìˆìœ¼ë‹ˆê¹Œ, yì¢Œí‘œëŠ” ê²°êµ­ -5 ë§Œí¼ ë‚´ë¦¬ê³  ê·¸ ë‹¤ìŒì— ì´ ì¢Œí‘œë¥¼ ì„¤ì •í•´ì•¼í•¨. 
 	glTranslatef(ball[0], ball[1], ball[2]);
 	glRotatef(BallAngle, 0, 1, 0);
 	if (front_press) {
@@ -568,7 +568,7 @@ void draw_ball(){
 } 
 void draw_map() {
 	glPushMatrix();
-	glTranslatef(0, -5, 0);//yÃàÀ¸·Î ÀÏ´Ü 5 ³»¸²-> ±Ùµ¥ »ç½Ç»ó °è»ê½Ã¿¡´Â ¹Ù´ÚÀÌ 0ÀÓ.
+	glTranslatef(0, -5, 0);//yì¶•ìœ¼ë¡œ ì¼ë‹¨ 5 ë‚´ë¦¼-> ê·¼ë° ì‚¬ì‹¤ìƒ ê³„ì‚°ì‹œì—ëŠ” ë°”ë‹¥ì´ 0ì„.
 	draw_floor();
 	glPopMatrix();
 	glPushMatrix();
@@ -578,8 +578,8 @@ void draw_map() {
 	glPopMatrix();
 }
 void draw_string(void* font, const char* str, int x, int y) {
-	glPushAttrib(GL_LIGHTING_BIT); //light¿¡ °üÇÑ »óÅÂ¸¦ ÀúÀåÇÕ´Ï´Ù.
-	glDisable(GL_LIGHTING);//text¿¡ »ı±â´Â ±×¸²ÀÚ È¿°ú¸¦ Áö¿öÁİ´Ï´Ù
+	glPushAttrib(GL_LIGHTING_BIT); //lightì— ê´€í•œ ìƒíƒœë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
+	glDisable(GL_LIGHTING);//textì— ìƒê¸°ëŠ” ê·¸ë¦¼ì íš¨ê³¼ë¥¼ ì§€ì›Œì¤ë‹ˆë‹¤
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
@@ -625,8 +625,8 @@ void draw_coin_cnt() {
 
 }
 void draw_miniball(int x, int y) {
-	glPushAttrib(GL_LIGHTING_BIT); //light¿¡ °üÇÑ »óÅÂ¸¦ ÀúÀåÇÕ´Ï´Ù.
-	glDisable(GL_LIGHTING);//text¿¡ »ı±â´Â ±×¸²ÀÚ È¿°ú¸¦ Áö¿öÁİ´Ï´Ù.
+	glPushAttrib(GL_LIGHTING_BIT); //lightì— ê´€í•œ ìƒíƒœë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
+	glDisable(GL_LIGHTING);//textì— ìƒê¸°ëŠ” ê·¸ë¦¼ì íš¨ê³¼ë¥¼ ì§€ì›Œì¤ë‹ˆë‹¤.
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
@@ -649,7 +649,7 @@ void draw_time() {
 	int tmp_time = (end - start) / CLOCKS_PER_SEC;
 	int mm = tmp_time / 60;
 	int ss = tmp_time - mm;
-	if (mm == 1) {//°ÔÀÓ Á¦ÇÑ ½Ã°£ 1ºĞ
+	if (mm == 1) {//ê²Œì„ ì œí•œ ì‹œê°„ 1ë¶„
 		game_over = true;
 	}
 	sprintf(buf_time, "Time:%d:%d", mm, ss);
@@ -661,7 +661,7 @@ void draw_time() {
 		int ss = tmp_time - mm;
 
 		if (ss - tick == 1 || tick - ss == 59) {
-			mag_timer--;	//½Ã°£ÃÊ °¨¼Ò
+			mag_timer--;	//ì‹œê°„ì´ˆ ê°ì†Œ
 		}
 		tick = ss;
 		
@@ -687,7 +687,7 @@ void draw_time() {
 }
 void draw_COIN_with_texture(ObjParser* objParser){
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureCoin);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -723,7 +723,7 @@ void draw_COIN_with_texture(ObjParser* objParser){
 }
 void draw_MAGNET_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureMagnet);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -759,7 +759,7 @@ void draw_MAGNET_with_texture(ObjParser* objParser) {
 }
 void draw_ice_mountain_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureMountain);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -795,7 +795,7 @@ void draw_ice_mountain_with_texture(ObjParser* objParser) {
 }
 void draw_bomb_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureBomb);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -831,7 +831,7 @@ void draw_bomb_with_texture(ObjParser* objParser) {
 }
 void draw_crack_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureCrack);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -867,7 +867,7 @@ void draw_crack_with_texture(ObjParser* objParser) {
 }
 void draw_crashed_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureCrashed);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -903,7 +903,7 @@ void draw_crashed_with_texture(ObjParser* objParser) {
 }
 void draw_heart_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureHeart);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -939,7 +939,7 @@ void draw_heart_with_texture(ObjParser* objParser) {
 }
 void draw_trophy_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureTrophy);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -975,7 +975,7 @@ void draw_trophy_with_texture(ObjParser* objParser) {
 }
 void draw_icewall_with_texture(ObjParser* objParser) {
 	glDisable(GL_BLEND);
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureIcewall);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -1015,7 +1015,7 @@ void draw_dom_with_texture(ObjParser* objParser) {
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
-	// glEnable(GL_TEXTURE_2D);	// texture »ö º¸Á¸À» À§ÇÑ enable
+	// glEnable(GL_TEXTURE_2D);	// texture ìƒ‰ ë³´ì¡´ì„ ìœ„í•œ enable
 	glBindTexture(GL_TEXTURE_2D, textureDom);
 	glBegin(GL_TRIANGLES);
 	for (unsigned int n = 0; n < objParser->getFaceSize(); n += 3) {
@@ -1092,12 +1092,12 @@ void draw_coin_magnet_bomb() {
 	int i=0;
 	if (front_press || right_press || left_press || back_press) {
 		for (i = 0; i < 15; i++) {	
-			if (!rnd_coin[i]) {//¾ÆÁ÷ ÀÖÀ½
+			if (!rnd_coin[i]) {//ì•„ì§ ìˆìŒ
 				double x = coin_x[i], y = coin_y[i], z = coin_z[i];
 				double tmp = sqrt((ball[0] - x) * (ball[0] - x) + (ball[1] + detect - y) * (ball[1] + detect -y) + (ball[2] - z) * (ball[2] - z));
 				if (tmp < detect + 1) {
 					PlaySound(TEXT(SOUND_FILE_NAME_GET_COIN), NULL, SND_ASYNC);
-					size += 0.2; //»çÀÌÁî Ä¿Áü
+					size += 0.2; //ì‚¬ì´ì¦ˆ ì»¤ì§
 					if (mag_effect) detect = 3 * size;
 					else detect = size;
 					rnd_coin[i] = true;
@@ -1114,27 +1114,27 @@ void draw_coin_magnet_bomb() {
 				double tmp = sqrt((ball[0] - x) * (ball[0] - x) + (ball[1] + detect - y) * (ball[1] + size - y) + (ball[2] - z) * (ball[2] - z));
 				if (tmp < detect + 1) {
 					PlaySound(TEXT(SOUND_FILE_NAME_GET_MAGNET), NULL, SND_ASYNC);
-					if (!mag_effect) { //ÇöÀç ÀÚ¼®È¿°ú°¡ È°¼ºÈ­µÇÁö ¾ÊÀº »óÅÂ¿´À» ¶§ 
-						detect = size * 3; //¹üÀ§°¡ ³Ğ¾îÁö´Â È¿°ú¸¦ ÁÖ°ÔµÊ.
-						mag_timer += 6;	//½Ã°£À» 10ÃÊ Áõ°¡½ÃÄÑ 
-						start_mag = clock(); //½Ã°£ÃÊ¸¦ on
-						mag_effect = true;//ÀÚ¼® È¿°ú¸¦ ÄÑÁÜ
+					if (!mag_effect) { //í˜„ì¬ ìì„íš¨ê³¼ê°€ í™œì„±í™”ë˜ì§€ ì•Šì€ ìƒíƒœì˜€ì„ ë•Œ 
+						detect = size * 3; //ë²”ìœ„ê°€ ë„“ì–´ì§€ëŠ” íš¨ê³¼ë¥¼ ì£¼ê²Œë¨.
+						mag_timer += 6;	//ì‹œê°„ì„ 10ì´ˆ ì¦ê°€ì‹œì¼œ 
+						start_mag = clock(); //ì‹œê°„ì´ˆë¥¼ on
+						mag_effect = true;//ìì„ íš¨ê³¼ë¥¼ ì¼œì¤Œ
 					}
-					else {	//ÀÚ¼® È¿°ú°¡ Ä¿Áø »óÅÂ·Î ÀÚ¼®À» ¸Ô¾úÀ» °æ¿ì
-						mag_timer += 6;		//Å¸ÀÌ¸Ó¸¸ Áõ°¡½ÃÄÑ 
+					else {	//ìì„ íš¨ê³¼ê°€ ì»¤ì§„ ìƒíƒœë¡œ ìì„ì„ ë¨¹ì—ˆì„ ê²½ìš°
+						mag_timer += 6;		//íƒ€ì´ë¨¸ë§Œ ì¦ê°€ì‹œì¼œ 
 					}
 					score += 50;
-					rnd_mag[i] = true;	//ÇØ´ç ÀÚ¼®Àº ¸Ô¾ú´Ù´Â °ÍÀ» Ç¥½Ã
+					rnd_mag[i] = true;	//í•´ë‹¹ ìì„ì€ ë¨¹ì—ˆë‹¤ëŠ” ê²ƒì„ í‘œì‹œ
 				}
 			}
 		}
 		for (i = 0; i < 10; i++) {
-			if (!rnd_bomb[i]) {//¾ÆÁ÷ ÀÖÀ½
+			if (!rnd_bomb[i]) {//ì•„ì§ ìˆìŒ
 				double x = bomb_x[i], y = bomb_y[i], z = bomb_z[i];
 				double tmp = sqrt((ball[0] - x) * (ball[0] - x) + (ball[1] + detect - y) * (ball[1] + size - y) + (ball[2] - z) * (ball[2] - z));
 				if (tmp < size + 2) {
 					PlaySound(TEXT(SOUND_FILE_NAME_BOMB), NULL, SND_ASYNC);
-					size -= 0.2; //»çÀÌÁî Ä¿Áü
+					size -= 0.2; //ì‚¬ì´ì¦ˆ ì»¤ì§
 					if (mag_effect)detect = 3 * size;
 					else detect = size;
 					rnd_bomb[i] = true;
@@ -1176,11 +1176,11 @@ void draw_bomb() {
 	int i = 0;
 	if (front_press || right_press || left_press || back_press) {
 		for (i = 0; i < 5; i++) {
-			if (!rnd_bomb[i]) {//¾ÆÁ÷ ÀÖÀ½
+			if (!rnd_bomb[i]) {//ì•„ì§ ìˆìŒ
 				double x = bomb_x[i], y = bomb_y[i], z = bomb_z[i];
 				double tmp = sqrt((ball[0] - x) * (ball[0] - x) + (ball[1] + detect - y) * (ball[1] + size - y) + (ball[2] - z) * (ball[2] - z));
 				if (tmp < size + 2) {
-					size -= 0.2; //»çÀÌÁî Ä¿Áü
+					size -= 0.2; //ì‚¬ì´ì¦ˆ ì»¤ì§
 					detect = size;
 					if (mag_effect)detect = 3 * size;
 					rnd_bomb[i] = true;
@@ -1295,20 +1295,20 @@ void draw_start() {
 
 	glRotatef(-270, 0, 1, 0);
 	
-	glPushAttrib(GL_LIGHTING_BIT); //light¿¡ °üÇÑ »óÅÂ¸¦ ÀúÀåÇÕ´Ï´Ù.
+	glPushAttrib(GL_LIGHTING_BIT); //lightì— ê´€í•œ ìƒíƒœë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 	glDisable(GL_LIGHTING);
 	glDisable(GL_BLEND);
 	glPushMatrix();
 	gluOrtho2D(-10, 10, -10, 10);
 	glFrontFace(GL_CW);
 	glColor3f(1.0f,1.0f,1.0f);
-	glBegin(GL_QUADS);				//»ç°¢Çü ±×¸®±â ÇÔ¼ö
+	glBegin(GL_QUADS);				//ì‚¬ê°í˜• ê·¸ë¦¬ê¸° í•¨ìˆ˜
 		glVertex2f(-35.0f, 6.0f);
 		glVertex2f(30.0f, 6.0f);
 		glVertex2f(30.0f, -4.0f);
 		glVertex2f(-35.0f, -4.0f);
 	glEnd();
-	glBegin(GL_QUADS);				//»ç°¢Çü ±×¸®±â ÇÔ¼ö
+	glBegin(GL_QUADS);				//ì‚¬ê°í˜• ê·¸ë¦¬ê¸° í•¨ìˆ˜
 	glVertex2f(-35.0f, -11.0f);
 	glVertex2f(30.0f, -11.0f);
 	glVertex2f(30.0f, -21.0f);
@@ -1341,7 +1341,7 @@ void draw_how_to_play() {
 
 
 	glPushMatrix();
-	glTranslatef(0, -5, 0);//yÃàÀ¸·Î ÀÏ´Ü 5 ³»¸²-> ±Ùµ¥ »ç½Ç»ó °è»ê½Ã¿¡´Â ¹Ù´ÚÀÌ 0ÀÓ.
+	glTranslatef(0, -5, 0);//yì¶•ìœ¼ë¡œ ì¼ë‹¨ 5 ë‚´ë¦¼-> ê·¼ë° ì‚¬ì‹¤ìƒ ê³„ì‚°ì‹œì—ëŠ” ë°”ë‹¥ì´ 0ì„.
 	glRotatef(start_angle, 0, 1, 0);
 	draw_map();
 	glPopMatrix();
@@ -1396,7 +1396,7 @@ void draw_end() {
 	gluLookAt(cam[0] + ball[0], cam[1] + ball[1], cam[2] + ball[2], ball[0], ball[1], ball[2], 0, up, 0);
 
 	glPushMatrix();
-	glTranslatef(0, -5, 0);//yÃàÀ¸·Î ÀÏ´Ü 5 ³»¸²-> ±Ùµ¥ »ç½Ç»ó °è»ê½Ã¿¡´Â ¹Ù´ÚÀÌ 0ÀÓ.
+	glTranslatef(0, -5, 0);//yì¶•ìœ¼ë¡œ ì¼ë‹¨ 5 ë‚´ë¦¼-> ê·¼ë° ì‚¬ì‹¤ìƒ ê³„ì‚°ì‹œì—ëŠ” ë°”ë‹¥ì´ 0ì„.
 	glRotatef(start_angle, ball[0], ball[1], ball[2]);
 	draw_map();
 	draw_coin_magnet_bomb();
@@ -1436,7 +1436,7 @@ void draw_win() {
 	gluLookAt(cam[0] ,cam[1], cam[2], 0, 0, 0, 0, up, 0);
 
 	glPushMatrix();
-	glTranslatef(0, -5, 0);//yÃàÀ¸·Î ÀÏ´Ü 5 ³»¸²-> ±Ùµ¥ »ç½Ç»ó °è»ê½Ã¿¡´Â ¹Ù´ÚÀÌ 0ÀÓ.
+	glTranslatef(0, -5, 0);//yì¶•ìœ¼ë¡œ ì¼ë‹¨ 5 ë‚´ë¦¼-> ê·¼ë° ì‚¬ì‹¤ìƒ ê³„ì‚°ì‹œì—ëŠ” ë°”ë‹¥ì´ 0ì„.
 	glRotatef(start_angle+60, 0, 1, 0);
 	draw_map();
 	glScalef(2.5, 2.5, 2.5);
@@ -1485,7 +1485,7 @@ void draw(void) {
 	draw_time();
 	draw_coin_cnt();
 
-	draw_ball(); //motion Æ÷ÇÔ
+	draw_ball(); //motion í¬í•¨
 	draw_map();
 	glPushMatrix();
 	glTranslatef(0, -5, 0);
@@ -1504,14 +1504,14 @@ void resize(int width, int height) {
 	glLoadIdentity();
 
 	gluPerspective(45, (float)width / (float)height, 1, 500);
-	//glOrtho(-15, 15, -15, 15, -15, 15);//À°¸éÃ¼ Çü½ÄÀÇ °¡½ÃºÎÇÇ¸¦ ¼³Á¤ -> Áß½ÉÀº 0,0,0
+	//glOrtho(-15, 15, -15, 15, -15, 15);//ìœ¡ë©´ì²´ í˜•ì‹ì˜ ê°€ì‹œë¶€í”¼ë¥¼ ì„¤ì • -> ì¤‘ì‹¬ì€ 0,0,0
 	//glFrustum(-10, 10, -15, 15, 1, 500);
 
 	glMatrixMode(GL_MODELVIEW);
 	glutPostRedisplay();
 }
 
-/*Å°º¸µå ÀÔ·Â Äİ¹é ÇÔ¼ö*/
+/*í‚¤ë³´ë“œ ì…ë ¥ ì½œë°± í•¨ìˆ˜*/
 void special_keyboard(int key, int x, int y) {
 	if (key == GLUT_KEY_LEFT) {
 		pi += 5;
@@ -1534,16 +1534,16 @@ void special_keyboard(int key, int x, int y) {
 	glutPostRedisplay();
 }
 void keyboard_p(unsigned char key, int x, int y) {
-	if (key == 'w') {//¾Õ
+	if (key == 'w') {//ì•
 		front_press = true;
 	}
-	else if (key == 'a') { //¿Ş
+	else if (key == 'a') { //ì™¼
 		left_press = true;
 	}
-	else if (key == 'd') { //¿À¸¥ÂÊ
+	else if (key == 'd') { //ì˜¤ë¥¸ìª½
 		right_press = true;	
 	}
-	else if (key == 's') {//µÚ·Î 
+	else if (key == 's') {//ë’¤ë¡œ 
 		back_press = true;
 	}
 	else if (key == ' ') {
@@ -1593,29 +1593,29 @@ void keyboard_p(unsigned char key, int x, int y) {
 			score = 0;
 		}
 		else if (key == 27) {
-			printf("°ÔÀÓ Á¾·á\n");
+			printf("ê²Œì„ ì¢…ë£Œ\n");
 			exit(0);
 		}
 	}
 	glutPostRedisplay();
 }
 void keyboard_r(unsigned char key, int x, int y) {
-	if (key == 'w') {//¾Õ
+	if (key == 'w') {//ì•
 		front_press = false;
 	}
-	else if (key == 'a') { //¿Ş
+	else if (key == 'a') { //ì™¼
 		left_press = false;
 	}
-	else if (key == 'd') { //¿À¸¥ÂÊ
+	else if (key == 'd') { //ì˜¤ë¥¸ìª½
 		right_press = false;
 	}
-	else if (key == 's') {//µÚ·Î 
+	else if (key == 's') {//ë’¤ë¡œ 
 		back_press = false;
 	}
 }
-/*¸¶¿ì½º*/
+/*ë§ˆìš°ìŠ¤*/
 void mouseWheel(int buotton, int dir, int x, int y) {
-	if (dir > 0) { //°¡±î¿ö Áö´Â °Í
+	if (dir > 0) { //ê°€ê¹Œì›Œ ì§€ëŠ” ê²ƒ
 		Cam_radius *= 0.9;
 	}
 	else {
@@ -1628,7 +1628,7 @@ void mouseWheel(int buotton, int dir, int x, int y) {
 }
 void main_menu(int option) {
 	if (option == 1) {
-		printf("Á¾·áÇÕ´Ï´Ù!\n");
+		printf("ì¢…ë£Œí•©ë‹ˆë‹¤!\n");
 		exit(0);
 	}
 }
@@ -1655,7 +1655,7 @@ int cnt = 100;
 void idle() {
 	end = clock();
 	if (mag_effect) {
-		end_mag = clock();	//ÀÚ¼® ½Ã°£ Ã¼Å©¿ë
+		end_mag = clock();	//ìì„ ì‹œê°„ ì²´í¬ìš©
 	}
 	if (jump_state) {
 		if (jump_up) {
@@ -1719,7 +1719,7 @@ void mouse(int button, int state, int x, int y) {
 		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 			printf("x: %d, y: %d\n", x, y);
 
-			/*½ÃÀÛ È­¸é¿¡¼­ °ÔÀÓ ÁøÇàÈ­¸éÀ¸·Î ³Ñ¾î°¨*/
+			/*ì‹œì‘ í™”ë©´ì—ì„œ ê²Œì„ ì§„í–‰í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°*/
 			if ((283 <= x && x <= 751) && (257 <= y && y <= 326)) {
 				start_display = false;
 				Cam_radius = 13 * sqrt(3);
@@ -1728,7 +1728,7 @@ void mouse(int button, int state, int x, int y) {
 				start = clock();
 			}
 
-			/*½ÃÀÛÈ­¸é¿¡¼­ ¾î¶»°Ô ÇÃ·¹ÀÌÇÏ´ÂÁö ¾Ë·ÁÁÖ´Â È­¸éÀ¸·Î ³Ñ¾î°¨*/
+			/*ì‹œì‘í™”ë©´ì—ì„œ ì–´ë–»ê²Œ í”Œë ˆì´í•˜ëŠ”ì§€ ì•Œë ¤ì£¼ëŠ” í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°*/
 			if ((364 <= x && x <= 751) && (380 <= y && y <= 448)) {
 				start_display = false;
 				how_to_play = true;
